@@ -109,6 +109,11 @@
     settings.PermitRootLogin = "prohibit-password";
   };
 
+  security.sudo = {
+      # remember the top level options?
+      wheelNeedsPassword = false;
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
