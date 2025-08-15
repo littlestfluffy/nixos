@@ -1,5 +1,25 @@
 # nixos
 
+## Preparation
+
+### Remote SSH Access
+
+You can optionally directly enable SSH login to allow remote access during the installation process, for this simply configure a password
+
+You can figure out the machine IP by using the following command
+```shell
+ip addr show
+```
+
+```shell
+passwd
+```
+
+On your other machine you can then SSH into the machine with:
+```shell
+ssh nixos@IP
+```
+
 ## Installation
 
 ### Partition disks
