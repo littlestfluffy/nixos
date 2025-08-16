@@ -16,7 +16,6 @@
     loader = {
       grub = {
         enable = true;
-        device = "nodev";
         useOSProber = true;
         timeoutStyle = "menu";
       };

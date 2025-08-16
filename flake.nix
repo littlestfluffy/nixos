@@ -20,13 +20,13 @@
 
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations = let
-      mkSystem = { hostname, profile ? hostname, disk ? null }: nixpkgs.lib.nixosSystem {
+      mkSystem = { hostname, profile ? hostname, disk ? "nodev" }: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
           ./system/${profile}/configuration.nix
           { networking.hostName = hostname; boot.loader.grub.device = disk; }
-        ] ++ (if profile == "qemu" && disk != null then [
+        ] ++ (if profile == "qemu" then [
           {
             system.activationScripts.postBootCommands.text = ''
               wipefs -a ${disk}
