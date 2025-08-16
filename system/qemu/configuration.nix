@@ -2,15 +2,11 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }@args:
-
-let
-  disk = args.disk or "nodev"; # fallback if no disk passed
-in {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+{ config, lib, pkgs, inputs, disk ? "nodev", ... }:
+{
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   boot = {
     kernelParams = [ "ipv6.disable=1" ];
