@@ -26,20 +26,7 @@
         modules = [
           ./system/${profile}/configuration.nix
           { networking.hostName = hostname; boot.loader.grub.device = disk; }
-        ] ++ (if profile == "qemu" then [
-          {
-            system.activationScripts.postBootCommands.text = ''
-              wipefs -a ${disk}
-              parted ${disk} -- mklabel MBR
-              parted ${disk} -- mkpart primary ext4 1MiB 512MiB
-              parted ${disk} -- mkpart primary ext4 513MiB 100%
-              mkfs.ext4 ${disk}1 -L NIXBOOT
-              mkfs.ext4 ${disk}2 -L NIXROOT
-              mount ${disk}2 /mnt
-              mount --mkdir ${disk}1 /mnt/boot
-            '';
-          }
-        ] else []);
+        ];
       };
     in {
       krolik = mkSystem { hostname = "krolik"; };
