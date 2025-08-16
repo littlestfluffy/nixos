@@ -16,7 +16,7 @@
     loader = {
       grub = {
         enable = true;
-        device = "/dev/sda";
+        device = "/dev/disk/by-label/NIXBOOT";
         efiSupport = true;
         useOSProber = true;
         timeoutStyle = "menu";
