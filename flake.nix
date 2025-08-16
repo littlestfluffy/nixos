@@ -11,10 +11,7 @@
   };
 
   inputs = {
-    # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-
-    # Hyprland
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
@@ -25,9 +22,9 @@
         specialArgs = { inherit inputs disk; };
         modules = [
           ./system/${profile}/configuration.nix
-          { networking.hostName = hostname; disk = disk; }
+          { networking.hostName = hostname; }
         ] ++ (if disk != null then [
-          {
+          ({ pkgs, ... }: {
             nixos.install.postBootCommands = ''
               wipefs -a ${disk}
               parted ${disk} -- mklabel gpt
@@ -46,7 +43,7 @@
               mkdir -p /mnt/boot
               mount ${disk}1 /mnt/boot
             '';
-          }
+          })
         ] else []);
       };
     in {
