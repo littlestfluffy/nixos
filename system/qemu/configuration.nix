@@ -10,21 +10,21 @@
       ./hardware-configuration.nix
     ];
 
-   boot = {
-	 kernelParams = ["ipv6.disable=1"];
-	 tmp.cleanOnBoot = true;
-	 loader = {
-	 	grub = {
-	 		enable = true;
-	 		device = "nodev";
-	 		efiSupport = true;
-	 		useOSProber = true;
-	 		timeoutStyle = "menu";
-            efiInstallAsRemovable = true;
-	 	};
-	 	timeout = 10;
-	 };
-   };
+  boot = {
+    kernelParams = ["ipv6.disable=1"];
+    tmp.cleanOnBoot = true;
+    loader = {
+      grub = {
+        enable = true;
+        device = "/dev/sda";
+        efiSupport = true;
+        useOSProber = true;
+        timeoutStyle = "menu";
+        efiInstallAsRemovable = true;
+      };
+      timeout = 10;
+    };
+  };
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
