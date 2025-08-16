@@ -28,7 +28,7 @@
           { networking.hostName = hostname; boot.loader.grub.device = disk; }
         ] ++ (if profile == "qemu" && disk != null then [
           {
-            system.install.postBootCommands = ''
+            system.activationScripts.postBootCommands.text = ''
               wipefs -a ${disk}
               parted ${disk} -- mklabel MBR
               parted ${disk} -- mkpart primary ext4 1MiB 512MiB
