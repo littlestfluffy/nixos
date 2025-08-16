@@ -2,19 +2,21 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, disk ? "nodev", ... }:
+{ config, lib, pkgs, inputs, ... }:
+
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
 
   boot = {
-    kernelParams = [ "ipv6.disable=1" ];
+    kernelParams = ["ipv6.disable=1"];
     tmp.cleanOnBoot = true;
     loader = {
       grub = {
         enable = true;
-        device = disk;
+        device = "nodev";
         useOSProber = true;
         timeoutStyle = "menu";
       };
