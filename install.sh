@@ -24,12 +24,31 @@ fi
 # Optional disk formatting
 # -------------------------
 if [ -n "$DISK" ]; then
+  # Unmount partitions if mounted
+  for PART in "${DISK}"*; do
+    if mountpoint -q "$PART"; then
+      echo "Unmounting $PART..."
+      umount "$PART"
+    fi
+  done
+
+  # Prompt unless AUTO_APPROVE=1
+  if [ "${AUTO_APPROVE:-0}" != "1" ]; then
+    echo "⚠️  About to wipe and partition $DISK. Make sure this is correct!"
+    read -rp "Type 'YES' to continue: " CONFIRM
+    if [ "$CONFIRM" != "YES" ]; then
+      echo "Aborted by user."
+      exit 1
+    fi
+  else
+    echo "AUTO_APPROVE=1 detected, skipping confirmation."
+  fi
+
   echo "Wiping and partitioning $DISK..."
   wipefs -a "$DISK"
-  # Use proper parted label
   parted "$DISK" --script mklabel msdos
-  parted "$DISK" --script mkpart primary ext4 1MiB 1024MiB
-  parted "$DISK" --script mkpart primary ext4 1025MiB 100%
+  parted "$DISK" --script mkpart primary ext4 1MiB 512MiB
+  parted "$DISK" --script mkpart primary ext4 513MiB 100%
 
   mkfs.ext4 "${DISK}1" -L NIXBOOT
   mkfs.ext4 "${DISK}2" -L NIXROOT
