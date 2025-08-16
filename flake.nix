@@ -22,7 +22,7 @@
     nixosConfigurations = let
       mkSystem = { hostname, profile ? hostname, disk ? null }: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs disk; };
         modules = [
           ./system/${profile}/configuration.nix
           { networking.hostName = hostname; disk = disk; }
