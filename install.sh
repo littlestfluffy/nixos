@@ -28,8 +28,8 @@ if [ -n "$DISK" ]; then
   wipefs -a "$DISK"
   # Use proper parted label
   parted "$DISK" --script mklabel msdos
-  parted "$DISK" --script mkpart primary ext4 1MiB 512MiB
-  parted "$DISK" --script mkpart primary ext4 513MiB 100%
+  parted "$DISK" --script mkpart primary ext4 1MiB 1024MiB
+  parted "$DISK" --script mkpart primary ext4 1025MiB 100%
 
   mkfs.ext4 "${DISK}1" -L NIXBOOT
   mkfs.ext4 "${DISK}2" -L NIXROOT
