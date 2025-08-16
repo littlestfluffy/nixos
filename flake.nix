@@ -1,7 +1,6 @@
 {
   description = "A simple NixOS flake";
 
-
   nixConfig = {
     extra-substituters = [
       "https://hyprland.cachix.org"
@@ -20,15 +19,18 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-    # Please replace my-nixos with your hostname
-    nixosConfigurations.krolik = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
-        ./configuration.nix
-      ];
+    nixosConfigurations = let
+      mkSystem = { hostname, profile ? hostname }: nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./system/${profile}/configuration.nix
+          { networking.hostName = hostname; }
+        ];
+      };
+    in {
+      krolik = mkSystem { hostname = "krolik"; };
+      test = mkSystem { hostname = "test"; profile = "qemu"; };
     };
   };
 }
