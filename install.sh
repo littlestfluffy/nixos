@@ -41,6 +41,6 @@ fi
 # Install NixOS via flake
 # -------------------------
 echo "Installing NixOS for hostname '$HOSTNAME'..."
-nixos-install --impure --no-root-passwd --flake "github:littlestfluffy/nixos#$HOSTNAME"
+nixos-install --impure --no-root-passwd --flake "github:littlestfluffy/nixos#$HOSTNAME --accept-flake-config"
 
 echo "✅ NixOS installation complete! Reboot into your new system."
