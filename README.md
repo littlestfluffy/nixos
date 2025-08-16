@@ -23,9 +23,17 @@ ssh nixos@IP
 ## Installation
 
 ### Partition disks
+
+#### EUFI
 ```shell
 sudo mkfs.fat -F 32 /dev/sda1
 sudo fatlabel /dev/sda1 NIXBOOT
+sudo mkfs.ext4 /dev/sda2 -L NIXROOT
+```
+
+#### BIOS
+```shell
+sudo mkfs.ext4 /dev/sda1 -L NIXBOOT
 sudo mkfs.ext4 /dev/sda2 -L NIXROOT
 ```
 

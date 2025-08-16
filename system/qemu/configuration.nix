@@ -17,10 +17,8 @@
       grub = {
         enable = true;
         device = "/dev/disk/by-label/NIXBOOT";
-        efiSupport = true;
         useOSProber = true;
         timeoutStyle = "menu";
-        efiInstallAsRemovable = true;
       };
       timeout = 10;
     };
