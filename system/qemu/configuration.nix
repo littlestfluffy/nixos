@@ -6,15 +6,14 @@
 
 let
   disk = args.disk or "nodev"; # fallback if no disk passed
-in
-{
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
   boot = {
-    kernelParams = ["ipv6.disable=1"];
+    kernelParams = [ "ipv6.disable=1" ];
     tmp.cleanOnBoot = true;
     loader = {
       grub = {
