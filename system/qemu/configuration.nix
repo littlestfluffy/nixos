@@ -4,6 +4,9 @@
 
 { config, lib, pkgs, inputs, ... }:
 
+let
+  disk = args.disk or "nodev"; # fallback if no disk passed
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -16,7 +19,7 @@
     loader = {
       grub = {
         enable = true;
-        device = if builtins.getAttr "disk" config // {} != {} then config.disk else "nodev";
+        device = disk;
         useOSProber = true;
         timeoutStyle = "menu";
       };
