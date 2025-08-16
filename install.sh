@@ -24,13 +24,6 @@ fi
 # Optional disk formatting
 # -------------------------
 if [ -n "$DISK" ]; then
-  echo "⚠️  About to wipe and partition $DISK. Make sure this is correct!"
-  read -p "Type YES to continue: " CONFIRM
-  if [ "$CONFIRM" != "YES" ]; then
-    echo "Aborted by user."
-    exit 1
-  fi
-
   echo "Wiping and partitioning $DISK..."
   wipefs -a "$DISK"
   parted "$DISK" -- mklabel MBR
