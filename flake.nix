@@ -24,7 +24,7 @@
           ./system/${profile}/configuration.nix
           { networking.hostName = hostname; }
         ] ++ (if disk != null then [
-          ({ pkgs, ... }: {
+          ({ pkgs, disk, ... }: {
             nixos.install.postBootCommands = ''
               wipefs -a ${disk}
               parted ${disk} -- mklabel gpt
