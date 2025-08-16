@@ -16,7 +16,7 @@
     loader = {
       grub = {
         enable = true;
-        device = "/dev/sda";
+        device = if builtins.getAttr "disk" config // {} != {} then config.disk else "nodev";
         useOSProber = true;
         timeoutStyle = "menu";
       };
