@@ -24,26 +24,6 @@ fi
 # Optional disk formatting
 # -------------------------
 if [ -n "$DISK" ]; then
-  # Unmount partitions if mounted
-  for PART in "${DISK}"*; do
-    if mountpoint -q "$PART"; then
-      echo "Unmounting $PART..."
-      umount "$PART"
-    fi
-  done
-
-  # Prompt unless AUTO_APPROVE=1
-  if [ "${AUTO_APPROVE:-0}" != "1" ]; then
-    echo "⚠️  About to wipe and partition $DISK. Make sure this is correct!"
-    read -rp "Type 'YES' to continue: " CONFIRM
-    if [ "$CONFIRM" != "YES" ]; then
-      echo "Aborted by user."
-      exit 1
-    fi
-  else
-    echo "AUTO_APPROVE=1 detected, skipping confirmation."
-  fi
-
   echo "Wiping and partitioning $DISK..."
   wipefs -a "$DISK"
   parted "$DISK" --script mklabel msdos
