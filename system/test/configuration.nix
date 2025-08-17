@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./..
     ./../../modules/pipewire.nix
+    ./../../modules/hyprland
   ];
 
   services.qemuGuest.enable = true;
