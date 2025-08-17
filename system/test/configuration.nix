@@ -13,7 +13,7 @@ let
 in
 {
   imports = [
-    (if existing == [] then null else builtins.head existing)
+    (builtins.head existing)
     ./..
     ./../../modules/pipewire.nix
   ];
