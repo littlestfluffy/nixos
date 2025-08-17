@@ -22,6 +22,7 @@
 				inputs = with pkgs; [
 					patchelf
 					steamcmd
+					steam-run
 				];
 				execer = with pkgs; [
 					"cannot:${steamcmd}/bin/steamcmd"

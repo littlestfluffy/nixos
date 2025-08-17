@@ -28,6 +28,7 @@ in {
 
 		serviceConfig = {
 			ExecStart = utils.escapeSystemdExecArgs [
+			  "${pkgs.steam-run}/bin/steam-run"
 				"/var/lib/steam-app-${steam-app}/FactoryServer.sh"
 				"-ini:Game:[/Script/Engine.GameSession]:MaxPlayers=10"
 				"-ini:Engine:[/Script/FactoryGame.FGSaveSession]:mNumRotatingAutosaves=10"
