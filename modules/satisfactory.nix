@@ -5,6 +5,7 @@
 in {
 	imports = [
 		./steamcmd.nix
+		./restic.nix
 	];
 
 	systemd.services.satisfactory = {
@@ -28,11 +29,21 @@ in {
 			WorkingDirectory = "~";
 		};
 	};
-#
-#	# This is my custom backup machinery. Substitute your own 🙂
-#	kevincox.backup.satisfactory = {
-#		paths = [
-#			"/var/lib/satisfactory/save/"
-#		];
-#	};
+
+  services.restic.backups.satisfactory = {
+    initialize = true; # create repo if missing
+    repositoryFile = "/etc/nixos/restic-repository";
+    passwordFile = "/etc/nixos/restic-password";
+    paths = [
+      "/var/lib/steam/.config/Epic/FactoryGame/Saved/SaveGames"
+    ];
+    timerConfig = {
+      OnCalendar = "hourly";
+      Persistent = true;
+    };
+    user = "restic";
+    package = pkgs.writeShellScriptBin "restic" ''
+      exec /run/wrappers/bin/restic "$@"
+    '';
+  };
 }
