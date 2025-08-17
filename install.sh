@@ -43,6 +43,6 @@ sudo nixos-generate-config --root /mnt
 # Install NixOS via flake
 # -------------------------
 echo "Installing NixOS for hostname '$HOSTNAME'..."
-nixos-install --impure --no-write-lock-file --no-root-passwd --flake "github:littlestfluffy/nixos#$HOSTNAME --accept-flake-config"
+nixos-install --impure --no-write-lock-file --no-root-passwd --flake "github:littlestfluffy/nixos#$HOSTNAME"
 
 echo "✅ NixOS installation complete! Reboot into your new system."
