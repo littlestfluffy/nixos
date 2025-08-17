@@ -14,7 +14,7 @@
       existing = builtins.filter builtins.pathExists candidates;
     in
       (if existing == [] then [] else [ (builtins.head existing) ])
-      ++ [ ./../ ];
+      ++ [ ./.. ];
 
   services.qemuGuest.enable = true;
 
