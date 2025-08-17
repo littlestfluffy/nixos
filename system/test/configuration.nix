@@ -9,10 +9,9 @@
       ./hardware-configuration.nix
       /mnt/etc/nixos/hardware-configuration.nix
       /etc/nixos/hardware-configuration.nix
-    ];
-  in (builtins.filter builtins.pathExists candidates) ++ [ ./.. ] ++ [
-    ./../../modules/pipewire.nix
-  ];
+    ]; existing = builtins.filter builtins.pathExists candidates; in (if existing == [] then [] else [ builtins.head existing ])
+    ++ [ ./.. ]
+    ++ [ ./../../modules/pipewire.nix ]
 
   services.qemuGuest.enable = true;
 
@@ -22,3 +21,12 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 }
+  imports = let
+    candidates = [
+      ./hardware-configuration.nix
+      /mnt/etc/nixos/hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
+    ];
+  in (builtins.filter builtins.pathExists candidates) ++ [ ./.. ] ++ [
+    ./../../modules/pipewire.nix
+  ];
