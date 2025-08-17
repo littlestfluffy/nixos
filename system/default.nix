@@ -15,6 +15,8 @@
     };
   };
 
+  programs.fish.enable = true;
+
   users.users.emily = {
     isNormalUser = true;
     shell = pkgs.fish;

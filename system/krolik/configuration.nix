@@ -5,18 +5,13 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    let
-      candidates = [
-        ./hardware-configuration.nix
-        /mnt/etc/nixos/hardware-configuration.nix
-        /etc/nixos/hardware-configuration.nix
-      ];
-      existing = builtins.filter builtins.pathExists candidates;
-    in
-      # only take the first match (or none) and then append ./../
-      (if existing == [] then [] else [ (builtins.head existing) ])
-      ++ [ ./../ ];
+  imports = let
+    candidates = [
+      ./hardware-configuration.nix
+      /mnt/etc/nixos/hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
+    ];
+  in (builtins.filter builtins.pathExists candidates) ++ [ ./.. ];
 
   networking.networkmanager.enable = true;
 
