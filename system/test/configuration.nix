@@ -7,15 +7,15 @@ let
     /etc/nixos/hardware-configuration.nix
   ];
 
-  # filter only existing paths
   existing = builtins.filter builtins.pathExists candidates;
-
-  # take the first if any, otherwise null
   hwConfig = if existing == [] then null else builtins.head existing;
+
+  # function to filter nulls from a list
+  filterNulls = list: builtins.filter (x: x != null) list;
 in
 {
-  imports = lib.cleanNull [
-    hwConfig          # first existing hardware config
+  imports = filterNulls [
+    hwConfig
     ./..               # your main modules
     ./../../modules/pipewire.nix
   ];
