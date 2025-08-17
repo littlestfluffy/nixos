@@ -8,6 +8,8 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/boot.nix
+    ./../../modules/locales.nix
+    ./../../modules/network.nix
     ./../../modules/qemu-guest.nix
     #./../../modules/pipewire.nix
     #./../../modules/hyprland.nix
