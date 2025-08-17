@@ -4,8 +4,9 @@
   imports = [
     ./hardware-configuration.nix
     ./..
+    ./../nvidia.nix
     ./../../modules/pipewire.nix
-    ./../../modules/hyprland
+    ./../../modules/hyprland.nix
   ];
 
   services.qemuGuest.enable = true;
