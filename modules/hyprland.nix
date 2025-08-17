@@ -9,6 +9,8 @@
     pkgs.alacritty
     pkgs.rofi-wayland
     pkgs.waybar
+    pkgs.waypaper
+    pkgs.swww
   ];
 
   fonts.packages = with pkgs; [
