@@ -1,22 +1,9 @@
 { config, lib, pkgs, inputs, ... }:
 
-let
-  candidates = [
-    ./hardware-configuration.nix
-    /mnt/etc/nixos/hardware-configuration.nix
-    /etc/nixos/hardware-configuration.nix
-  ];
-
-  existing = builtins.filter builtins.pathExists candidates;
-  hwConfig = if existing == [] then null else builtins.head existing;
-
-  # function to filter nulls from a list
-  filterNulls = list: builtins.filter (x: x != null) list;
-in
 {
-  imports = filterNulls [
-    hwConfig
-    ./..               # your main modules
+  imports = [
+    ./hardware-configuration.nix
+    ./..
     ./../../modules/pipewire.nix
   ];
 

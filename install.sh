@@ -26,23 +26,45 @@ fi
 if [ -n "$DISK" ]; then
   echo "Wiping and partitioning $DISK..."
   wipefs -a "$DISK"
-  parted "$DISK" --script mklabel msdos
-  parted "$DISK" --script mkpart primary ext4 1MiB 1024MiB
-  parted "$DISK" --script mkpart primary ext4 1025MiB 100%
 
-  mkfs.ext4 "${DISK}1" -L NIXBOOT
-  mkfs.ext4 "${DISK}2" -L NIXROOT
+    if mountpoint -q /mnt/boot; then
+      sudo umount /mnt/boot
+    fi
 
-  mount "${DISK}2" /mnt
-  mount --mkdir "${DISK}1" /mnt/boot
+    # Unmount /mnt if mounted
+    if mountpoint -q /mnt; then
+      sudo umount /mnt
+    fi
+
+  # Check for UEFI support
+  if [ -d /sys/firmware/efi ]; then
+    echo "UEFI detected. Creating EFI and root partitions..."
+    parted "$DISK" --script mklabel gpt
+    parted "$DISK" --script mkpart ESP fat32 1MiB 1024MiB
+    parted "$DISK" --script set 1 boot on
+    parted "$DISK" --script mkpart primary ext4 1025MiB 100%
+
+    mkfs.fat -F32 "${DISK}1" -n EFI
+    mkfs.ext4 "${DISK}2" -L NIXROOT
+
+    mount "${DISK}2" /mnt
+    mount --mkdir "${DISK}1" /mnt/boot
+  else
+    echo "No UEFI detected. Creating single root partition..."
+    parted "$DISK" --script mklabel msdos
+    parted "$DISK" --script mkpart primary ext4 1MiB 100%
+
+    mkfs.ext4 "${DISK}1" -L NIXROOT
+
+    mount "${DISK}1" /mnt
+  fi
 fi
-
-sudo nixos-generate-config --root /mnt
 
 # -------------------------
 # Install NixOS via flake
 # -------------------------
 echo "Installing NixOS for hostname '$HOSTNAME'..."
+nix-collect-garbage -d
 nixos-install --impure --no-write-lock-file --no-root-passwd --flake "github:littlestfluffy/nixos#$HOSTNAME"
 
 echo "✅ NixOS installation complete! Reboot into your new system."
