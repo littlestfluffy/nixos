@@ -10,13 +10,11 @@
     ];
   };
 
-  inputs = let
-    nixosVersion = "25.05";
-  in {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-${nixosVersion}";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     hyprland.url = "github:hyprwm/Hyprland";
     home-manager = {
-      url = "github:nix-community/home-manager/release-${nixosVersion}";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
