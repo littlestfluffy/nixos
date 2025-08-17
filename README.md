@@ -53,7 +53,7 @@ sudo mount --mkdir /dev/disk/by-label/NIXBOOT /mnt/boot
 ### Initial Installation
 
 ```shell
-sudo nixos-generate-config --root /mnt --dir /tmp
+sudo nixos-generate-config --root /mnt
 sudo nixos-install --no-root-passwd --flake github:littlestfluffy/nixos#HOSTNAME --accept-flake-config
 ```
 

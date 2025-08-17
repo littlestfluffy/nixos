@@ -37,7 +37,7 @@ if [ -n "$DISK" ]; then
   mount --mkdir "${DISK}1" /mnt/boot
 fi
 
-sudo nixos-generate-config --root /mnt --dir /tmp
+sudo nixos-generate-config --root /mnt
 
 # -------------------------
 # Install NixOS via flake

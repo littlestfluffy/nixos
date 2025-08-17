@@ -10,28 +10,33 @@
     ];
   };
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+  inputs = let
+    nixosVersion = "25.05";
+  in {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-${nixosVersion}";
     hyprland.url = "github:hyprwm/Hyprland";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-${nixosVersion}";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations = let
-      mkSystem = { hostname, profile ? hostname, disk ? "nodev" }: nixpkgs.lib.nixosSystem {
+      mkSystem = { hostname, disk ? "nodev" }: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./system/${profile}/configuration.nix
+          ./system/${hostname}/configuration.nix
           { networking.hostName = hostname; boot.loader.grub.device = disk; }
         ];
       };
     in {
       krolik = mkSystem { hostname = "krolik"; };
-      test   = mkSystem { hostname = "test"; profile = "qemu"; disk = "/dev/sda"; };
+      test = mkSystem {
+        hostname = "test";
+        disk = "/dev/sda";
+      };
     };
   };
 }
