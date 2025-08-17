@@ -10,9 +10,8 @@
     ./../../modules
     ./../../modules/qemu-guest.nix
     ./../../modules/openssh-server.nix
+    ./../../modules/satisfactory.nix
   ];
-
-#  programs.fish.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
