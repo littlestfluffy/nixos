@@ -7,24 +7,17 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./../../modules/boot.nix
-    ./../../modules/locales.nix
-    ./../../modules/network.nix
+    ./../../modules
     ./../../modules/qemu-guest.nix
-    #./../../modules/pipewire.nix
-    #./../../modules/hyprland.nix
-    ./../../modules/users.nix
     ./../../modules/openssh-server.nix
   ];
 
 #  programs.fish.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
     vim
     git
   ];
-
 
   my.users = {
     username = "emily";

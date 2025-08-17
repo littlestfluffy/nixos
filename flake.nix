@@ -10,6 +10,8 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
     nixosConfigurations = let
       mkSystem = { hostname, disk ? "nodev" }: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
