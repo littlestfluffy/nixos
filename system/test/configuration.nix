@@ -7,6 +7,7 @@
     ./../nvidia.nix
     ./../../modules/pipewire.nix
     ./../../modules/hyprland.nix
+    ./../../modules/vivaldi.nix
   ];
 
   services.qemuGuest.enable = true;
