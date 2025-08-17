@@ -21,7 +21,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # -------------------------
-# Optional disk formatting
+# Disk formatting
 # -------------------------
 if [ -n "$DISK" ]; then
   echo "Wiping and partitioning $DISK..."
@@ -36,6 +36,8 @@ if [ -n "$DISK" ]; then
   mount "${DISK}2" /mnt
   mount --mkdir "${DISK}1" /mnt/boot
 fi
+
+sudo nixos-generate-config --root /mnt --dir /tmp
 
 # -------------------------
 # Install NixOS via flake

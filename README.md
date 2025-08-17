@@ -22,6 +22,12 @@ ssh nixos@IP
 
 ## Installation
 
+### Automatic
+
+```shell
+curl -L https://raw.githubusercontent.com/littlestfluffy/nixos/main/install.sh | sudo bash -s <HOSTNAME> [/dev/DRIVE]
+```
+
 ### Partition disks
 
 #### EUFI
@@ -47,11 +53,12 @@ sudo mount --mkdir /dev/disk/by-label/NIXBOOT /mnt/boot
 ### Initial Installation
 
 ```shell
-sudo nixos-install --no-root-passwd --flake github:littlestfluffy/nixos#HOSTNAME
+sudo nixos-generate-config --root /mnt --dir /tmp
+sudo nixos-install --no-root-passwd --flake github:littlestfluffy/nixos#HOSTNAME --accept-flake-config
 ```
 
 ## Updating
 
 ```shell
-sudo nixos-rebuild switch --flake github:littlestfluffy/nixos
+sudo nixos-rebuild switch --flake github:littlestfluffy/nixos --accept-flake-config
 ```

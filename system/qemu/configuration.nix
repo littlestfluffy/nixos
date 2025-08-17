@@ -5,9 +5,11 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+    (if builtins.pathExists /mnt/etc/nixos/hardware-configuration.nix
+     then [ /mnt/etc/nixos/hardware-configuration.nix ]
+     else if builtins.pathExists /etc/nixos/hardware-configuration.nix
+     then [ /etc/nixos/hardware-configuration.nix ]
+     else []);
 
   boot = {
     kernelParams = ["ipv6.disable=1"];
@@ -40,7 +42,7 @@
 
   users.users.littlestfluffy = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ];
     packages = with pkgs; [
       git
       fish

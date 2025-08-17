@@ -6,9 +6,11 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+    (if builtins.pathExists /mnt/etc/nixos/hardware-configuration.nix
+     then [ /mnt/etc/nixos/hardware-configuration.nix ]
+     else if builtins.pathExists /etc/nixos/hardware-configuration.nix
+     then [ /etc/nixos/hardware-configuration.nix ]
+     else []);
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
