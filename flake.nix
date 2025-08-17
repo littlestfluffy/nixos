@@ -15,6 +15,7 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+          ./system/default.nix
           ./system/${hostname}/configuration.nix
           { networking.hostName = hostname; boot.loader.grub.device = disk; }
         ];
