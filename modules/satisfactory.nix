@@ -37,11 +37,6 @@ in {
 			User = "satisfactory";
 			WorkingDirectory = "~";
 		};
-		environment = {
-			# linux64 directory is required by satisfactory.
-			LD_LIBRARY_PATH = "/var/lib/steam-app-${steam-app}/linux64:${pkgs.glibc}/lib";
-			SteamAppId = "${steam-app}";
-		};
 	};
 #
 #	# This is my custom backup machinery. Substitute your own 🙂

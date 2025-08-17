@@ -1,5 +1,7 @@
 # steam.nix
 {config, pkgs, lib, ...}: {
+  nixpkgs.config.allowUnfree = true;
+
 	users.users.steam = {
 		isSystemUser = true;
 		group = "steam";
