@@ -7,6 +7,7 @@
 
   environment.systemPackages = [
     pkgs.alacritty
+    pkgs.rofi-wayland
   ];
 
   fonts.packages = with pkgs; [
