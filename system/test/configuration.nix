@@ -10,7 +10,9 @@
       /mnt/etc/nixos/hardware-configuration.nix
       /etc/nixos/hardware-configuration.nix
     ];
-  in (builtins.filter builtins.pathExists candidates) ++ [ ./.. ];
+  in (builtins.filter builtins.pathExists candidates) ++ [ ./.. ] ++ [
+    ./../../modules/pipewire.nix
+  ];
 
   services.qemuGuest.enable = true;
 

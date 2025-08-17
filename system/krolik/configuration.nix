@@ -13,8 +13,6 @@
     ];
   in (builtins.filter builtins.pathExists candidates) ++ [ ./.. ];
 
-  networking.networkmanager.enable = true;
-
    services.pipewire = {
      enable = true;
      pulse.enable = true;
