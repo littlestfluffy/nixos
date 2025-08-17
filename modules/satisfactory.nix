@@ -14,6 +14,7 @@ in {
 		createHome = true;
 		homeMode = "750";
 		group = "satisfactory";
+		extraGroups = [ "steam" ];
 	};
 
 	users.groups.satisfactory = {};
