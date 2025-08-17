@@ -17,9 +17,7 @@
     ./../../modules/openssh-server.nix
   ];
 
-#  my.users.username = "alice";
-
-  programs.fish.enable = true;
+#  programs.fish.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
