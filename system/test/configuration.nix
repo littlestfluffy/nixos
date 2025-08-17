@@ -21,12 +21,3 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 }
-  imports = let
-    candidates = [
-      ./hardware-configuration.nix
-      /mnt/etc/nixos/hardware-configuration.nix
-      /etc/nixos/hardware-configuration.nix
-    ];
-  in (builtins.filter builtins.pathExists candidates) ++ [ ./.. ] ++ [
-    ./../../modules/pipewire.nix
-  ];
