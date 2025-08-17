@@ -7,18 +7,6 @@ in {
 		./steamcmd.nix
 	];
 
-	users.users.satisfactory = {
-		isSystemUser = true;
-		# satisfactory puts save data in the home directory.
-		home = "/var/lib/satisfactory";
-		createHome = true;
-		homeMode = "750";
-		group = "satisfactory";
-		extraGroups = [ "steam" ];
-	};
-
-	users.groups.satisfactory = {};
-
 	systemd.services.satisfactory = {
 		wantedBy = [ "multi-user.target" ];
 
@@ -36,7 +24,7 @@ in {
 			Nice = "-5";
 			PrivateTmp = true;
 			Restart = "always";
-			User = "satisfactory";
+			User = "steam";
 			WorkingDirectory = "~";
 		};
 	};
