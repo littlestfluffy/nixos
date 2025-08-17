@@ -1,6 +1,8 @@
 # steam.nix
 {config, pkgs, lib, ...}: {
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "steamcmd"
+  ];
 
 	users.users.steam = {
 		isSystemUser = true;
