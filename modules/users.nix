@@ -36,7 +36,11 @@ with lib;
       packages = config.my.users.packages;
     };
 
+    security.sudo = {
+      wheelNeedsPassword = false;
+    };
+
     services.getty.autologinUser = mkIf config.my.users.autologin
       config.my.users.username;
-  };
+    };
 }
