@@ -1,19 +1,42 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
+with lib;
 {
-  users.users.emily = {
-    isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-    openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE3LE6HunHPEvtNs4Tg3Nud0uHRMeihcCdiORosXrmfY"
-    ];
+  options.my.users = {
+    username = mkOption {
+      type = types.str;
+      default = "user";
+      description = "Primary username.";
+    };
+
+    sshKeys = mkOption {
+      type = types.listOf types.str;
+      default = [];
+      description = "List of SSH public keys for the user.";
+    };
+
+    packages = mkOption {
+      type = types.listOf types.package;
+      default = [];
+      description = "Extra packages installed for the user.";
+    };
+
+    autologin = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Whether to enable TTY autologin for this user.";
+    };
   };
 
-  # Enable automatic login for the user.
-  #services.getty.autologinUser = "emily";
+  config = {
+    users.users.${config.my.users.username} = {
+      isNormalUser = true;
+      extraGroups = [ "networkmanager" "wheel" ];
+      openssh.authorizedKeys.keys = config.my.users.sshKeys;
+      packages = config.my.users.packages;
+    };
 
-  security.sudo = {
-      wheelNeedsPassword = false;
+    services.getty.autologinUser = mkIf config.my.users.autologin
+      config.my.users.username;
   };
 }
