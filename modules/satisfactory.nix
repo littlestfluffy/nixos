@@ -6,24 +6,32 @@ in {
 #		./steamcmd.nix
 #	];
 
-	users.users.satisfactory = {
+  nixpkgs.config.allowUnfreePredicate = pkg:
+  let n = lib.getName pkg;
+  in builtins.elem n [
+    "steamcmd"
+    "steam-run"
+    "steam-unwrapped"
+  ];
+
+	users.users.${steam-name} = {
     isSystemUser = true;
-    group = "satisfactory";
+    group = "${steam-name}";
     home = "/var/lib/${steam-name}";
   };
 
-  users.groups.satisfactory = {};
+  users.groups.${steam-name} = {};
 
   networking.firewall.allowedTCPPorts = [ 7777 8888 ];
   networking.firewall.allowedUDPPorts = [ 7777 ];
 
-  systemd.services.satisfactory = {
-    description = "Satisfactory Dedicated Server";
+  systemd.services.${steam-name} = {
+    description = "Dedicated Server: ${steam-name}";
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      User = "satisfactory";
+      User = "${steam-name}";
       WorkingDirectory = "/var/lib/${steam-name}";
       ExecStartPre = ''
         ${pkgs.steamcmd}/bin/steamcmd
