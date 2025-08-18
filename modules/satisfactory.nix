@@ -2,10 +2,6 @@
 	steam-app = "1690800";
 	steam-name = "satisfactory";
 in {
-#	imports = [
-#		./steamcmd.nix
-#	];
-
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steamcmd"
     "steam-run"
