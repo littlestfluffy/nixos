@@ -29,9 +29,12 @@ with lib;
   };
 
   config = {
+   programs.fish.enable = true;
+
     users.users.${config.my.users.username} = {
       isNormalUser = true;
       extraGroups = [ "networkmanager" "wheel" ];
+      shell = pkgs.fish;
       openssh.authorizedKeys.keys = config.my.users.sshKeys;
       packages = config.my.users.packages;
     };
