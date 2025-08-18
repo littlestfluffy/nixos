@@ -43,7 +43,7 @@ in {
 			  "${pkgs.steam-run}/bin/steam-run"
 				"/var/lib/${steam-name}/FactoryServer.sh"
 				"-ini:Game:[/Script/Engine.GameSession]:MaxPlayers=10"
-				"-ini:Engine:[/Script/FactoryGame.FGSaveSession]:mNumRotatingAutosaves=10"
+				"-ini:Engine:[/Script/FactoryGame.FGSaveSession]:mNumRotatingAutosaves=5"
 			];
       Restart = "always";
       RestartSec = 5;
