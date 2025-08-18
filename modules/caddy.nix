@@ -6,7 +6,7 @@
   services.caddy = {
     enable = true;
     configFile = "/etc/caddy/Caddyfile";
-    environmentFile = "/run/secrets/caddy.env";
+    environmentFile = "/etc/caddy/caddy.env";
     package = pkgs.caddy.withPlugins {
         plugins = [
           "github.com/caddy-dns/cloudflare@v0.2.1"
