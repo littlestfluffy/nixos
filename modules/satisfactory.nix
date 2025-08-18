@@ -2,6 +2,10 @@
 	steam-app = "1690800";
 	steam-name = "satisfactory";
 in {
+	imports = [
+		./restic.nix
+	];
+
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steamcmd"
     "steam-run"
@@ -44,5 +48,29 @@ in {
       Restart = "always";
       RestartSec = 5;
     };
+  };
+
+  services.restic.backups.satisfactory = {
+    initialize = true; # create repo if missing
+    repositoryFile = "/etc/nixos/restic-repository";
+    passwordFile = "/etc/nixos/restic-password";
+    paths = [
+      "/var/lib/${steam-name}/.config/Epic/FactoryGame/Saved/SaveGames"
+    ];
+    pruneOpts = [
+      "--keep-hourly 24"
+      "--keep-daily 7"
+      "--keep-weekly 5"
+      "--keep-monthly 12"
+      "--keep-yearly 1"
+    ];
+    timerConfig = {
+      OnCalendar = "hourly";
+      Persistent = true;
+    };
+    user = "restic";
+    package = pkgs.writeShellScriptBin "restic" ''
+      exec /run/wrappers/bin/restic "$@"
+    '';
   };
 }
