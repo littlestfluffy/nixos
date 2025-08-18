@@ -32,14 +32,13 @@ in {
     serviceConfig = {
       User = "${steam-name}";
       WorkingDirectory = "/var/lib/${steam-name}";
-      ExecStartPre = ''
-        ${pkgs.steamcmd}/bin/steamcmd
-        +@sSteamCmdForcePlatformType linux
-        +login anonymous
-        +force_install_dir /var/lib/${steam-name}
-        +app_update ${steam-app} validate
-        +quit
-        '';
+      ExecStartPre = utils.escapeSystemdExecArgs [
+        "${pkgs.steamcmd}/bin/steamcmd"
+        "+force_install_dir /var/lib/${steam-name}"
+        "+login anonymous"
+        "+app_update ${steam-app} validate"
+        "+quit"
+      ];
 			ExecStart = utils.escapeSystemdExecArgs [
 			  "${pkgs.steam-run}/bin/steam-run"
 				"/var/lib/${steam-name}/FactoryServer.sh"
