@@ -8,8 +8,11 @@ in {
 
 	users.users.satisfactory = {
     isSystemUser = true;
+    group = "satisfactory";
     home = "/var/lib/${steam-name}";
   };
+
+  users.groups.satisfactory = {};
 
   networking.firewall.allowedTCPPorts = [ 7777 8888 ];
   networking.firewall.allowedUDPPorts = [ 7777 ];
