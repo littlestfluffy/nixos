@@ -29,7 +29,13 @@
         ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ens18 -j MASQUERADE
       '';
 
+      # Path to the private key file.
+      #
+      # Note: The private key can also be included inline via the privateKey option,
+      # but this makes the private key world-readable; thus, using privateKeyFile is
+      # recommended.
       generatePrivateKeyFile = true;
+      privateKeyFile = "/etc/wireguard/private.key";
 
       peers = [
 #        {
