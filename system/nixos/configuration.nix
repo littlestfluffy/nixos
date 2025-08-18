@@ -10,7 +10,7 @@
     ./../../modules
     ./../../modules/qemu-guest.nix
     ./../../modules/openssh-server.nix
-    ./../../modules/podman.nix
+    ./../../modules/docker-rootless.nix
   ];
 
   environment.systemPackages = with pkgs; [
