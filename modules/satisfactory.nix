@@ -50,12 +50,12 @@ in {
     };
   };
 
-  services.restic.backups.satisfactory = {
+  services.restic.backups.${steam-name} = {
     initialize = true; # create repo if missing
     repositoryFile = "/etc/nixos/restic-repository";
     passwordFile = "/etc/nixos/restic-password";
     paths = [
-      "/var/lib/${steam-name}/.config/Epic/FactoryGame/Saved/SaveGames"
+      "/var/lib/${steam-name}"
     ];
     pruneOpts = [
       "--keep-hourly 24"
