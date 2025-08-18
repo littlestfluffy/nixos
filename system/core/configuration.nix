@@ -12,6 +12,7 @@
     ./../../modules/openssh-server.nix
     ./../../modules/caddy.nix
     ./../../modules/docker-rootless.nix
+    ./../../modules/wireguard/server.nix
   ];
 
   environment.localBinInPath = true;
