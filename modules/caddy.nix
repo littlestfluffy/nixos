@@ -9,9 +9,9 @@
     environmentFile = "/run/secrets/caddy.env";
     package = pkgs.caddy.withPlugins {
         plugins = [
-          "github.com/caddy-dns/cloudflare"
-          "github.com/WeidiDeng/caddy-cloudflare-ip"
-          "github.com/mholt/caddy-dynamicdns"
+          "github.com/caddy-dns/cloudflare@v0.2.1"
+          "github.com/WeidiDeng/caddy-cloudflare-ip@main"
+          "github.com/mholt/caddy-dynamicdns@master"
         ];
         hash = "sha256-F/jqR4iEsklJFycTjSaW8B/V3iTGqqGOzwYBUXxRKrc=";
       };
