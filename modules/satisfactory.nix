@@ -5,6 +5,9 @@ in {
 		./steamcmd.nix
 	];
 
+  networking.firewall.allowedTCPPorts = [ 7777 8888 ];
+  networking.firewall.allowedUDPPorts = [ 7777 ];
+
 	systemd.services.satisfactory = {
 		wantedBy = [ "multi-user.target" ];
 
