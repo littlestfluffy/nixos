@@ -10,11 +10,13 @@
     ./../../modules
     ./../../modules/qemu-guest.nix
     ./../../modules/openssh-server.nix
+    ./../../modules/podman.nix
   ];
 
   environment.systemPackages = with pkgs; [
-    vim
     git
+    htop
+    vim
   ];
 
   my.users = {
