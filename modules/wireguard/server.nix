@@ -15,8 +15,6 @@ in
     enable = true;
 
     interfaces.wg0 = {
-      address ="10.100.0.1";
-
       # Determines the IP address and subnet of the server's end of the tunnel interface.
       ips = [ "10.100.0.1/24" ];
 
