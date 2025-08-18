@@ -10,9 +10,11 @@
     ./../../modules
     ./../../modules/qemu-guest.nix
     ./../../modules/openssh-server.nix
+    ./../../modules/caddy.nix
     ./../../modules/docker-rootless.nix
   ];
 
+  environment.localBinInPath = true;
   environment.systemPackages = with pkgs; [
     git
     htop
