@@ -24,7 +24,6 @@
     packages = with pkgs; [
       fish
     ];
-    autologin = true;
   };
 
   # This value determines the NixOS release from which the default
