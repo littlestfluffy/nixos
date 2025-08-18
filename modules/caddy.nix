@@ -4,6 +4,6 @@
   services.caddy = {
     enable = true;
     configFile = "/etc/caddy/Caddyfile";
-    environmentFile = "/run/secrets/caddy.env";
+    environmentFile = "/etc/caddy/caddy.env";
   };
 }
