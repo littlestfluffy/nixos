@@ -1,11 +1,8 @@
-# satisfactory.nix
 {config, pkgs, lib, utils, ...}: let
-	# Set to {id}-{branch}-{password} for betas.
 	steam-app = "1690800";
 in {
 	imports = [
 		./steamcmd.nix
-		./restic.nix
 	];
 
 	systemd.services.satisfactory = {
