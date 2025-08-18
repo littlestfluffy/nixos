@@ -24,7 +24,7 @@
     in {
       krolik = mkSystem { hostname = "krolik"; };
       satisfactory = mkSystem { hostname = "satisfactory"; disk = "/dev/sda"; };
-      nixos = mkSystem { hostname = "nixos"; disk = "/dev/sda"; };
+      core = mkSystem { hostname = "core"; disk = "/dev/sda"; };
     };
   };
 }
