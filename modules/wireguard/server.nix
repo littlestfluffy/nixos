@@ -41,16 +41,16 @@ in
       privateKeyFile = "/etc/wireguard/private.key";
 
       peers = [
-#        {
-#          name = "MobilePhone";
-#          publicKey = "8t+Ek6ka0e2iR0/Mc/oVLQMqA8HxVU582qJKvdTJxQY=";
-#          allowedIPs = [ "10.100.0.2/32" ];
-#        }
-#        {
-#          name = "WorkLaptop";
-#          publicKey = "{john doe's public key}";
-#          allowedIPs = [ "10.100.0.3/32" ];
-#        }
+        {
+          name = "MobilePhone";
+          publicKey = "ck/UvOTlGqQ0T9RwYoPHxfJBheygSDPF2HsXkOnO1hM=";
+          allowedIPs = [ "10.100.0.2/32" ];
+        }
+        {
+          name = "WorkLaptop";
+          publicKey = "sGfCYckxu7eUWvMlk19IHY7lDe7nSk1LTZODa7PiI34=";
+          allowedIPs = [ "10.100.0.3/32" ];
+        }
       ];
     };
   };
