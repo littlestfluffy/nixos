@@ -60,5 +60,5 @@ sudo nixos-install --no-root-passwd --flake github:littlestfluffy/nixos#HOSTNAME
 ## Updating
 
 ```shell
-sudo nixos-rebuild switch --flake github:littlestfluffy/nixos --accept-flake-config
+sudo nixos-rebuild switch --refresh --flake github:littlestfluffy/nixos
 ```
