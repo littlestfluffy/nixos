@@ -1,17 +1,21 @@
   { config, pkgs, ... }:
 
  {
-   systemd.services.irssi = {
-      wantedBy = [ "multi-user.target" ];
-      after = [ "network.target" ];
-      description = "Start the irssi client of username.";
-      serviceConfig = {
-        Type = "forking";
-        User = "${config.my.users.username}";
-        ExecStart = ''${pkgs.screen}/bin/screen -dmS irssi ${pkgs.irssi}/bin/irssi'';
-        ExecStop = ''${pkgs.screen}/bin/screen -S irssi -X quit'';
-      };
-   };
+  systemd.services.irssi = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    description = "Start the irssi client of username.";
+    serviceConfig = {
+      Type = "forking";
+      User = "${config.my.users.username}";
+      ExecStart = ''
+        ${pkgs.tmux}/bin/tmux new-session -d -s irssi ${pkgs.irssi}/bin/irssi
+      '';
+      ExecStop = ''
+        ${pkgs.tmux}/bin/tmux kill-session -t irssi
+      '';
+    };
+  };
 
-   environment.systemPackages = [ pkgs.screen ];
+  environment.systemPackages = [ pkgs.tmux ];
  }
