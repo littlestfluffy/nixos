@@ -42,7 +42,6 @@ in {
 			ExecStart = utils.escapeSystemdExecArgs [
 			  "${pkgs.steam-run}/bin/steam-run"
 				"/var/lib/${steam-name}/FactoryServer.sh"
-				"-NetDriverListenSocketsUseIPv6=false"
 				"-ini:Game:[/Script/Engine.GameSession]:MaxPlayers=10"
 				"-ini:Engine:[/Script/FactoryGame.FGSaveSession]:mNumRotatingAutosaves=5"
 			];
