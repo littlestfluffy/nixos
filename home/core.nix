@@ -4,6 +4,16 @@
   home.username = "emily";
   home.homeDirectory = "/home/emily";
 
-  programs.git.enable = true;
+  home.packages = [
+    pkgs.htop
+    pkgs.fortune
+  ];
+
   programs.home-manager.enable = true;
+
+  programs.git = {
+    enable = true;
+    userName = "Jane Doe";
+    userEmail = "jane.doe@example.org";
+  };
 }
