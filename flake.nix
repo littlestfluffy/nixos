@@ -25,6 +25,8 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
+            home.stateVersion = "25.05";
+
             home-manager.users.emily = import ./home/${hostname}.nix;
           }
         ];
