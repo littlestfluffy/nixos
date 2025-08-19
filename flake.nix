@@ -20,13 +20,11 @@
           ./system/${hostname}/configuration.nix
           { networking.hostName = hostname; boot.loader.grub.device = disk; }
 
-          # Enable Home Manager as a NixOS module
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            home.stateVersion = "25.05";
-
+            # point to per-user config
             home-manager.users.emily = import ./home/${hostname}.nix;
           }
         ];
