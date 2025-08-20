@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
-  imports = [
-    ./../modules/irssi.nix
-  ];
+#  imports = [
+#    ./../modules/irssi.nix
+#  ];
 
   home.stateVersion = "25.05";
   home.username = "emily";

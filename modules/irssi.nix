@@ -1,20 +1,19 @@
 { config, pkgs, ... }:
 
 {
-  systemd.user.services.irssi = {
-    Unit = {
-      Description = "Irssi IRC Client";
-      After = [ "network.target" ];
-    };
-    Service = {
+  systemd.services.irssi = {
+    description = "Irssi IRC Client";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
       Type = "forking";
       ExecStart = "${pkgs.tmux}/bin/tmux new-session -d -s irssi ${pkgs.irssi}/bin/irssi";
       ExecStop = "${pkgs.tmux}/bin/tmux kill-session -t irssi";
-      Restart = "never";
+      Restart = "always";
       Environment = "TERM=xterm-256color";
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
+      User = "${config.my.users.username}";
     };
   };
 }
+
