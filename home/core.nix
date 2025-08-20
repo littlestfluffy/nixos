@@ -19,4 +19,9 @@
     userName = "Jane Doe";
     userEmail = "jane.doe@example.org";
   };
+
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = true;
+  };
 }
