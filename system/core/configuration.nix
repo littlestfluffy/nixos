@@ -13,7 +13,6 @@
     ./../../modules/caddy.nix
     ./../../modules/docker-rootless.nix
     ./../../modules/wireguard/server.nix
-    ./../../modules/irssi.nix
   ];
 
   environment.localBinInPath = true;
