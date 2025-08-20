@@ -19,7 +19,6 @@
         modules = [
           ./system/${hostname}/configuration.nix
           { networking.hostName = hostname; boot.loader.grub.device = disk; }
-#
 #          home-manager.nixosModules.home-manager {
 #            home-manager.useGlobalPkgs = true;
 #            home-manager.useUserPackages = true;
@@ -27,7 +26,7 @@
 #            # point to per-user config
 #            home-manager.users.emily = import ./home/${hostname}.nix;
 #          }
-#        ];
+        ];
       };
     in {
       krolik = mkSystem { hostname = "krolik"; };
