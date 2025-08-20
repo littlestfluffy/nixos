@@ -7,7 +7,7 @@
     description = "Start the irssi client of username.";
     serviceConfig = {
       Type = "forking";
-      User = "${config.my.users.username}";
+      User = "${config.home.username}";
       ExecStart = ''
         ${pkgs.tmux}/bin/tmux new-session -d -s irssi ${pkgs.irssi}/bin/irssi
       '';
