@@ -8,8 +8,9 @@
     };
     Service = {
       ExecStart = "${pkgs.tmux}/bin/tmux new-session -d -s irssi ${pkgs.irssi}/bin/irssi";
-      ExexStop = "${pkgs.tmux}/bin/tmux kill-session -t irssi";
+      ExecStop = "${pkgs.tmux}/bin/tmux kill-session -t irssi";
       Restart = "never";
+      Environment = "TERM=xterm-256color";
     };
     Install = {
       WantedBy = [ "default.target" ];
