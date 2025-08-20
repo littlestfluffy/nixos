@@ -2,16 +2,17 @@
 
 {
   systemd.user.services.irssi = {
-    wantedBy = [ "default.target" ];
-    after = [ "network.target" ];
-    description = "Start the irssi client of username.";
-    serviceConfig = {
-      ExecStart = ''
-        ${pkgs.tmux}/bin/tmux new-session -d -s irssi ${pkgs.irssi}/bin/irssi
-      '';
-      ExecStop = ''
-        ${pkgs.tmux}/bin/tmux kill-session -t irssi
-      '';
+    Unit = {
+      Description = "Irssi IRC Client";
+      After = [ "network.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.tmux}/bin/tmux new-session -d -s irssi ${pkgs.irssi}/bin/irssi";
+      ExexStop = "${pkgs.tmux}/bin/tmux kill-session -t irssi";
+      Restart = "never";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
     };
   };
 }
