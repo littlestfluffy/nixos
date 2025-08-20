@@ -1,6 +1,6 @@
-  { config, pkgs, ... }:
+{ config, pkgs, ... }:
 
- {
+{
   systemd.services.irssi = {
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
@@ -16,6 +16,4 @@
       '';
     };
   };
-
-  environment.systemPackages = [ pkgs.tmux ];
- }
+}
