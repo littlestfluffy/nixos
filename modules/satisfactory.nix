@@ -21,7 +21,7 @@ in {
 
   users.groups.${steam-name} = {};
 
-  networking.firewall.allowedTCPPorts = [ 7777 8888 ];
+  networking.firewall.allowedTCPPorts = [ 7777 31768 ];
   networking.firewall.allowedUDPPorts = [ 7777 ];
 
   systemd.services.${steam-name} = {
@@ -42,6 +42,7 @@ in {
 			ExecStart = utils.escapeSystemdExecArgs [
 			  "${pkgs.steam-run}/bin/steam-run"
 				"/var/lib/${steam-name}/FactoryServer.sh"
+				"-ReliablePort=31768"
 				"-ini:Game:[/Script/Engine.GameSession]:MaxPlayers=10"
 				"-ini:Engine:[/Script/FactoryGame.FGSaveSession]:mNumRotatingAutosaves=5"
 			];
