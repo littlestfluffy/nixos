@@ -7,6 +7,7 @@
       After = [ "network.target" ];
     };
     Service = {
+      Type = "forking";
       ExecStart = "${pkgs.tmux}/bin/tmux new-session -d -s irssi ${pkgs.irssi}/bin/irssi";
       ExecStop = "${pkgs.tmux}/bin/tmux kill-session -t irssi";
       Restart = "never";
