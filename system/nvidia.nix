@@ -1,13 +1,15 @@
-{ config, pkgs, ... }:
+{config, pkgs, lib, utils, ...}:
 
 {
   # Allow unfree packages (needed for NVIDIA driver)
-  nixpkgs.config.allowUnfree = true;
+#  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "nvidia-x11"
+    "nvidia-settings"
+  ];
 
   # Your graphics config
-  hardware.graphics = {
-    enable = true;
-  };
+  hardware.graphics.enable = true;
 
   services.xserver.videoDrivers = ["nvidia"];
 

@@ -7,8 +7,12 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./../nvidia.nix
     ./../../modules
+    ./../../modules/ssh.nix
     ./../../modules/hyprland.nix
+    ./../../modules/vivaldi.nix
+    ./../../modules/steam.nix
   ];
 
   environment.localBinInPath = true;
@@ -22,7 +26,11 @@
     username = "emily";
     sshKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE3LE6HunHPEvtNs4Tg3Nud0uHRMeihcCdiORosXrmfY" ];
     packages = with pkgs; [
+			btop
       fish
+      unzip
+			jetbrains.idea-ultimate
+			ffmpeg
     ];
   };
 

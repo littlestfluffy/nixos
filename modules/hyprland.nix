@@ -11,6 +11,8 @@
     pkgs.waybar
     pkgs.waypaper
     pkgs.swww
+    pkgs.nwg-displays
+    pkgs.papirus-icon-theme
   ];
 
   fonts.packages = with pkgs; [
