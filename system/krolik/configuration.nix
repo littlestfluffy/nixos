@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ./../nvidia.nix
     ./../../modules
+    ./../../modules/boot.nix
     ./../../modules/ssh.nix
     ./../../modules/hyprland.nix
     ./../../modules/vivaldi.nix
