@@ -8,7 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules
-    ./../../modules/irssi.nix
+    ./../../modules/hyprland.nix
   ];
 
   environment.localBinInPath = true;
