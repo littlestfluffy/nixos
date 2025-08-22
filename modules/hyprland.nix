@@ -13,6 +13,7 @@
     pkgs.swww
     pkgs.nwg-displays
     pkgs.papirus-icon-theme
+    pkgs.jq
   ];
 
   fonts.packages = with pkgs; [

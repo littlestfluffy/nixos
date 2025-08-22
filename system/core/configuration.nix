@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules
+    ./../../modules/boot-legacy.nix
     ./../../modules/qemu-guest.nix
     ./../../modules/openssh-server.nix
     ./../../modules/caddy.nix

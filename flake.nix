@@ -13,7 +13,7 @@
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
     nixosConfigurations = let
-      mkSystem = { hostname, disk ? "nodev" }: nixpkgs.lib.nixosSystem {
+      mkSystem = { hostname, disk ? null }: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
