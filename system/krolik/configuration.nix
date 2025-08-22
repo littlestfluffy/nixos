@@ -1,26 +1,36 @@
 # Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports = let
-    candidates = [
-      ./hardware-configuration.nix
-      /mnt/etc/nixos/hardware-configuration.nix
-      /etc/nixos/hardware-configuration.nix
+  imports = [
+    ./hardware-configuration.nix
+    ./../../modules
+    ./../../modules/irssi.nix
+  ];
+
+  environment.localBinInPath = true;
+  environment.systemPackages = with pkgs; [
+    git
+    htop
+    vim
+  ];
+
+  my.users = {
+    username = "emily";
+    sshKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE3LE6HunHPEvtNs4Tg3Nud0uHRMeihcCdiORosXrmfY" ];
+    packages = with pkgs; [
+      fish
     ];
-  in (builtins.filter builtins.pathExists candidates) ++ [ ./.. ];
+  };
 
-   services.pipewire = {
-     enable = true;
-     pulse.enable = true;
-   };
-
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  services.openssh.enable = false;
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
