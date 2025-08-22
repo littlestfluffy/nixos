@@ -16,7 +16,7 @@
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = true;
-        systemd-boot.consoleMode = "max";
+        consoleMode = "max";
       };
     };
   };
