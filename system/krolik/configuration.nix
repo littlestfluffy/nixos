@@ -10,7 +10,9 @@
     ./../nvidia.nix
     ./../../modules
     ./../../modules/boot.nix
+    ./../../modules/bluetooth.nix
     ./../../modules/ssh.nix
+#    ./../../modules/gamescope.nix
     ./../../modules/hyprland.nix
     ./../../modules/vivaldi.nix
     ./../../modules/steam.nix
@@ -21,6 +23,8 @@
     git
     htop
     vim
+    gnome-keyring
+    gnome-themes-extra
   ];
 
   my.users = {
@@ -32,6 +36,7 @@
       unzip
 			jetbrains.idea-ultimate
 			ffmpeg
+			signal-desktop
     ];
   };
 
