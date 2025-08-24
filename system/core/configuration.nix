@@ -15,6 +15,7 @@
     ./../../modules/docker-rootless.nix
     ./../../modules/wireguard/server.nix
     ./../../modules/irssi.nix
+    ./../../modules/signal-cli.nix
   ];
 
   environment.localBinInPath = true;
@@ -29,7 +30,6 @@
     sshKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE3LE6HunHPEvtNs4Tg3Nud0uHRMeihcCdiORosXrmfY" ];
     packages = with pkgs; [
       fish
-      gurk-rs
     ];
   };
 
