@@ -31,8 +31,10 @@
 
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
-    /mnt/pve        192.168.2.0/24(rw,nohide,insecure,no_subtree_check,async)
+    /mnt/pve        192.168.2.0/24(rw,nohide,insecure,no_subtree_check,async,no_root_squash,no_all_squash)
   '';
+
+  networking.firewall.allowedTCPPorts = [ 2049 ];
 
   users.users.emily.linger = true;
 
