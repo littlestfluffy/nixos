@@ -18,6 +18,12 @@
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/pve" =
+    { device = "/dev/disk/by-uuid/63f9bccd-80c6-46a6-95e0-b8a55884de94";
+      fsType = "ext4";
+    };
+
+
   swapDevices = [ {
     device = "/swapfile";
     size = 2048;
