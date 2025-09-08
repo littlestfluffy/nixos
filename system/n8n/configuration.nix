@@ -18,6 +18,7 @@
     git
     htop
     vim
+    n8n
   ];
 
   my.users = {
