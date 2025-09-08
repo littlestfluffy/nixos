@@ -16,7 +16,10 @@
         "n8n_data:/home/node/.n8n"
       ];
       environment = {
+        GENERIC_TIMEZONE = "Europe/Amsterdam";
+        TZ = "Europe/Amsterdam";
         N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = "true";
+        N8N_RUNNERS_ENABLED = "true";
       };
     };
   };
