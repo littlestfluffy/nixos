@@ -15,6 +15,9 @@
       volumes = [
         "/var/lib/n8n:/home/node/.n8n"
       ];
+      environment = {
+        N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = "true";
+      };
     };
   };
 }
