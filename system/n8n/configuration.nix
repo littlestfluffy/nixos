@@ -11,7 +11,8 @@
     ./../../modules/boot-legacy.nix
     ./../../modules/qemu-guest.nix
     ./../../modules/openssh-server.nix
-    ./../../modules/n8n.nix
+    ./../../modules/docker.nix
+    ./../../modules/docker-n8n.nix
   ];
 
   environment.localBinInPath = true;
