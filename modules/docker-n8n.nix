@@ -5,6 +5,10 @@
     ./docker.nix
   ];
 
+  systemd.tmpfiles.rules = [
+    "d /var/lib/n8n 0755 1000 1000 -"
+  ];
+
   networking.firewall.allowedTCPPorts = [ 5678 ];
 
   virtualisation.oci-containers = {
