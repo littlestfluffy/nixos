@@ -33,6 +33,7 @@
       satisfactory = mkSystem { hostname = "satisfactory"; disk = "/dev/sda"; };
       core = mkSystem { hostname = "core"; disk = "/dev/sda"; };
       nfs = mkSystem { hostname = "nfs"; disk = "/dev/sda"; };
+      n8n = mkSystem { hostname = "n8n"; disk = "/dev/sda"; };
     };
   };
 }
