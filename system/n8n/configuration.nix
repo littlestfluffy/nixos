@@ -11,6 +11,7 @@
     ./../../modules/boot-legacy.nix
     ./../../modules/qemu-guest.nix
     ./../../modules/openssh-server.nix
+    ./../../modules/n8n.nix
   ];
 
   environment.localBinInPath = true;
@@ -18,7 +19,6 @@
     git
     htop
     vim
-    n8n
   ];
 
   my.users = {
