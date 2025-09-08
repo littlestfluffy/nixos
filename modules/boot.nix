@@ -2,7 +2,7 @@
 
 {
   boot = {
-    kernelParams = ["ipv6.disable=1"];
+#    kernelParams = ["ipv6.disable=1"];
     tmp.cleanOnBoot = true;
     loader = {
       efi.canTouchEfiVariables = true;

@@ -5,6 +5,10 @@
     ./docker.nix
   ];
 
+  systemd.tmpfiles.rules = [
+    "d /var/lib/n8n 0755 1000 1000 -"
+  ];
+
   networking.firewall.allowedTCPPorts = [ 5678 ];
 
   virtualisation.oci-containers = {
@@ -13,13 +17,12 @@
       image = "docker.n8n.io/n8nio/n8n:latest";
       ports = [ "5678:5678" ];
       volumes = [
-        "n8n_data:/home/node/.n8n"
+        "/var/lib/n8n:/home/node/.n8n"
       ];
       environment = {
         GENERIC_TIMEZONE = "Europe/Amsterdam";
         TZ = "Europe/Amsterdam";
         N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = "true";
-        N8N_RUNNERS_ENABLED = "true";
       };
     };
   };
