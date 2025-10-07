@@ -1,37 +1,31 @@
-{config, pkgs, lib, utils, ...}:
+{ config, pkgs, lib, utils, ... }:
 
 {
   imports = [
-    "${fetchTarball {
-      url = "https://github.com/onny/nixos-nextcloud-testumgebung/archive/fa6f062830b4bc3cedb9694c1dbf01d5fdf775ac.tar.gz";
-      sha256 = "0gzd0276b8da3ykapgqks2zhsqdv4jjvbv97dsxg0hgrhb74z0fs";}}/nextcloud-extras.nix"
+    ./docker.nix
   ];
 
-  environment.etc."nextcloud-admin-pass".text = "PWD";
-
-  networking.firewall.allowedTCPPorts = [ 80 ];
-
-  environment.systemPackages = with pkgs; [
-    ffmpeg
+  systemd.tmpfiles.rules = [
+    "d /var/lib/n8n 0755 1000 1000 -"
   ];
 
-  services.nextcloud = {
-    enable = true;
-    configureRedis = true;
-    hostName = "192.168.2.67";
-    config = {
-      adminpassFile = toString (pkgs.writeText "adminpass" "root");
-      dbtype = "pgsql";
-    };
-    database.createLocally = true;
-    extraApps = {
-      inherit (config.services.nextcloud.package.packages.apps) memories recognize;
-    };
-    extraAppsEnable = true;
-    ensureUsers = {
-      user1 = {
-        email = "user1@localhost";
-        passwordFile = "/etc/nextcloud-admin-pass";
+  networking.firewall.allowedTCPPorts = [ 5678 ];
+
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers.nextcloud-aio-mastercontainer = {
+      serviceName = "nextcloud-aio-mastercontainer";
+      image = "ghcr.io/nextcloud-releases/all-in-one:latest";
+      ports = [ "8080:8080" ];
+      extraOptions = ["--network=bridge"];
+      volumes = [
+        "/var/lib/nextcloud:/mnt/docker-aio-config"
+        "/var/run/docker.sock:/var/run/docker.sock:ro"
+      ];
+      environment = {
+        GENERIC_TIMEZONE = "Europe/Amsterdam";
+        TZ = "Europe/Amsterdam";
+        N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = "true";
       };
     };
   };
