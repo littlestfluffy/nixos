@@ -28,7 +28,7 @@
     hostName = "192.168.2.67";
     database.createLocally = true;
     config = {
-      dbtype = "mysql";
+      dbtype = "pgsql";
       adminpassFile = "/etc/nextcloud-admin-pass";
     };
 #    datadir = "/mnt";
