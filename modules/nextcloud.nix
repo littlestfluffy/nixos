@@ -28,5 +28,11 @@
       inherit (config.services.nextcloud.package.packages.apps) memories recognize;
     };
     extraAppsEnable = true;
+    ensureUsers = {
+      user1 = {
+        email = "user1@localhost";
+        passwordFile = "/etc/nextcloud-admin-pass";
+      };
+    };
   };
 }
