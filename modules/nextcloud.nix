@@ -13,7 +13,7 @@
     hostName = "192.168.2.67";
     config.adminpassFile = "/etc/nextcloud-admin-pass";
     config.dbtype = "sqlite";
-    datadir = "/mnt";
+#    datadir = "/mnt";
     extraApps = {
       inherit (config.services.nextcloud.package.packages.apps) memories;
     };
