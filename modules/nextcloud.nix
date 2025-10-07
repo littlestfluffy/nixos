@@ -26,7 +26,11 @@
     };
     maxUploadSize = "10G";
     hostName = "192.168.2.67";
-    config.adminpassFile = "/etc/nextcloud-admin-pass";
+    database.createLocally = true;
+    config = {
+      dbtype = "pgsql";
+      adminpassFile = "/etc/nextcloud-admin-pass";
+    };
 #    datadir = "/mnt";
     extraApps = {
       inherit (config.services.nextcloud.package.packages.apps) memories recognize;
