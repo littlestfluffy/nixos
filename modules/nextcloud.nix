@@ -4,6 +4,8 @@
   environment.etc."nextcloud-admin-pass".text = "PWD";
   environment.etc."nextcloud-user-pass".text = "PWD";
 
+  networking.firewall.allowedTCPPorts = [ 80 ];
+
   services.nextcloud = {
     enable = true;
     configureRedis = true;
