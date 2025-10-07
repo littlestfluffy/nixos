@@ -11,10 +11,7 @@
     ./../../modules/boot-legacy.nix
     ./../../modules/qemu-guest.nix
     ./../../modules/openssh-server.nix
-    ./../../modules/caddy.nix
-    ./../../modules/docker-rootless.nix
-    ./../../modules/wireguard/server.nix
-    ./../../modules/irssi.nix
+    ./../../modules/nextcloud.nix
   ];
 
   environment.localBinInPath = true;
@@ -31,8 +28,6 @@
       fish
     ];
   };
-
-  users.users.emily.linger = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -34,6 +34,7 @@
       core = mkSystem { hostname = "core"; disk = "/dev/sda"; };
       nfs = mkSystem { hostname = "nfs"; disk = "/dev/sda"; };
       n8n = mkSystem { hostname = "n8n"; disk = "/dev/sda"; };
+      nextcloud = mkSystem { hostname = "nextcloud"; disk = "/dev/sda"; };
     };
   };
 }
