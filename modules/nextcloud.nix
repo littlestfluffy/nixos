@@ -19,9 +19,10 @@
         "/var/run/docker.sock:/var/run/docker.sock:ro"
       ];
       environment = {
-        GENERIC_TIMEZONE = "Europe/Amsterdam";
+        AIO_DISABLE_BACKUP_SECTION = "true";
         TZ = "Europe/Amsterdam";
-        N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = "true";
+        NEXTCLOUD_STARTUP_APPS = "memories recognize";
+        SKIP_DOMAIN_VALIDATION = "true";
       };
     };
   };
