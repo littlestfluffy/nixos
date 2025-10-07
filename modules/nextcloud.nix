@@ -19,7 +19,7 @@
     enable = true;
     hostName = "192.168.2.67";
     config = {
-      adminpassFile = toString (pkgs.writeText "adminpass" "root");
+      adminpassFile = toString (pkgs.writeText "adminpass" "hunter2");
       dbtype = "pgsql";
     };
     database.createLocally = true;
