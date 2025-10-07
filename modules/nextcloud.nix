@@ -27,7 +27,7 @@
     extraApps = {
       inherit (config.services.nextcloud.package.packages.apps) memories recognize;
     };
-    autoUpdateApps.enable = true;
+
     settings = {
       mail_smtpmode = "sendmail";
       mail_sendmailmode = "pipe";
@@ -48,10 +48,10 @@
     };
 
     ensureUsers = {
-        user1 = {
-          email = "user1@localhost";
-          passwordFile = "/etc/nextcloud-user-pass";
-        };
+      user1 = {
+        email = "user1@localhost";
+        passwordFile = "/etc/nextcloud-user-pass";
       };
+    };
   };
 }
