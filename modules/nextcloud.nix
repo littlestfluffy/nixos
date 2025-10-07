@@ -13,10 +13,11 @@
     hostName = "192.168.2.67";
     config.adminpassFile = "/etc/nextcloud-admin-pass";
     config.dbtype = "sqlite";
+    datadir = "/mnt";
     extraApps = {
       inherit (config.services.nextcloud.package.packages.apps) memories;
     };
-    extraAppsEnable = true;
+    autoUpdateApps.enable = true;
     settings.enabledPreviewProviders = [
         "OC\\Preview\\BMP"
         "OC\\Preview\\GIF"
