@@ -15,7 +15,7 @@
       ports = [ "8080:8080" ];
       extraOptions = ["--network=bridge"];
       volumes = [
-        "/var/lib/nextcloud:/mnt/docker-aio-config"
+        "nextcloud_aio_mastercontainer:/mnt/docker-aio-config"
         "/var/run/docker.sock:/var/run/docker.sock:ro"
       ];
       environment = {
