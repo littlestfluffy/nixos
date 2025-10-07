@@ -6,6 +6,10 @@
 
   networking.firewall.allowedTCPPorts = [ 80 ];
 
+  environment.systemPackages = with pkgs; [
+    ffmpeg
+  ];
+
   services.nextcloud = {
     enable = true;
     configureRedis = true;
