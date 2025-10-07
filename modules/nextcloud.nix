@@ -17,39 +17,11 @@
 
   services.nextcloud = {
     enable = true;
-    configureRedis = true;
-    ensureUsers = {
-      user1 = {
-        email = "user1@example.org";
-        passwordFile = "/etc/nextcloud-admin-pass";
-      };
-    };
-    maxUploadSize = "10G";
     hostName = "192.168.2.67";
-    database.createLocally = true;
     config = {
+      adminpassFile = toString (pkgs.writeText "adminpass" "root");
       dbtype = "pgsql";
-      adminpassFile = "/etc/nextcloud-admin-pass";
     };
-#    datadir = "/mnt";
-    extraApps = {
-      inherit (config.services.nextcloud.package.packages.apps) memories recognize;
-    };
-
-    settings = {
-      enabledPreviewProviders = [
-        "OC\\Preview\\BMP"
-        "OC\\Preview\\GIF"
-        "OC\\Preview\\JPEG"
-        "OC\\Preview\\Krita"
-        "OC\\Preview\\MarkDown"
-        "OC\\Preview\\MP3"
-        "OC\\Preview\\OpenDocument"
-        "OC\\Preview\\PNG"
-        "OC\\Preview\\TXT"
-        "OC\\Preview\\XBitmap"
-        "OC\\Preview\\HEIC"
-      ];
-    };
+    database.createLocally = true;
   };
 }
