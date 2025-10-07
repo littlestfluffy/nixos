@@ -10,7 +10,7 @@
     enable = true;
     configureRedis = true;
     maxUploadSize = "10G";
-    hostName = "localhost";
+    hostName = "192.168.2.67";
     config.adminpassFile = "/etc/nextcloud-admin-pass";
     config.dbtype = "sqlite";
     settings.enabledPreviewProviders = [
