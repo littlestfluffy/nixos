@@ -20,11 +20,7 @@
     configureRedis = true;
     ensureUsers = {
       user1 = {
-        email = "user1@localhost";
-        passwordFile = "/etc/nextcloud-admin-pass";
-      };
-      user2 = {
-        email = "user2@localhost";
+        email = "user1@example.org";
         passwordFile = "/etc/nextcloud-admin-pass";
       };
     };
