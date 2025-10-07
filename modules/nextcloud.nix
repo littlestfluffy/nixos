@@ -34,9 +34,6 @@
     };
 
     settings = {
-      mail_smtpmode = "sendmail";
-      mail_sendmailmode = "pipe";
-
       enabledPreviewProviders = [
         "OC\\Preview\\BMP"
         "OC\\Preview\\GIF"
