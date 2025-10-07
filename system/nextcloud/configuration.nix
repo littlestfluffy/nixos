@@ -11,7 +11,7 @@
     ./../../modules/boot-legacy.nix
     ./../../modules/qemu-guest.nix
     ./../../modules/openssh-server.nix
-#    ./../../modules/nextcloud.nix
+    ./../../modules/nextcloud.nix
   ];
 
   environment.localBinInPath = true;
