@@ -23,7 +23,6 @@
     git
     htop
     vim
-    corosync
   ];
 
   my.users = {
