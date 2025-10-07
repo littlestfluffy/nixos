@@ -46,5 +46,12 @@
         "OC\\Preview\\HEIC"
       ];
     };
+
+    ensureUsers = {
+        user1 = {
+          email = "user1@localhost";
+          passwordFile = "/etc/nextcloud-user-pass";
+        };
+      };
   };
 }
