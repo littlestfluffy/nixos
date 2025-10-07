@@ -17,11 +17,16 @@
 
   services.nextcloud = {
     enable = true;
+    configureRedis = true;
     hostName = "192.168.2.67";
     config = {
-      adminpassFile = toString (pkgs.writeText "adminpass" "hunter2");
+      adminpassFile = toString (pkgs.writeText "adminpass" "root");
       dbtype = "pgsql";
     };
     database.createLocally = true;
+    extraApps = {
+      inherit (config.services.nextcloud.package.packages.apps) memories recognize;
+    };
+    extraAppsEnable = true;
   };
 }
