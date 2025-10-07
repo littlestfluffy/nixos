@@ -19,7 +19,7 @@
     config.dbtype = "sqlite";
 #    datadir = "/mnt";
     extraApps = {
-      inherit (config.services.nextcloud.package.packages.apps) memories;
+      inherit (config.services.nextcloud.package.packages.apps) memories recognize;
     };
     autoUpdateApps.enable = true;
     settings.enabledPreviewProviders = [
