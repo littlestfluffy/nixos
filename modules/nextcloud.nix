@@ -7,6 +7,11 @@
 
   networking.firewall.allowedTCPPorts = [ 8080 ];
 
+  fileSystems."/mnt/rs816" = {
+    device = "192.168.2.8:/volume1/homes";
+    fsType = "nfs";
+  };
+
   virtualisation.oci-containers = {
     backend = "docker";
     containers.nextcloud-aio-mastercontainer = {
