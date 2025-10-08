@@ -23,6 +23,7 @@
         TZ = "Europe/Amsterdam";
         NEXTCLOUD_STARTUP_APPS = "memories recognize";
         SKIP_DOMAIN_VALIDATION = "true";
+        NEXTCLOUD_DATADIR = "/mnt/rs816";
       };
     };
   };
