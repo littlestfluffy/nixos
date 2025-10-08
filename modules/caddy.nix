@@ -10,9 +10,9 @@
     package = pkgs.caddy.withPlugins {
         plugins = [
           "github.com/caddy-dns/cloudflare@v0.2.1"
-          "github.com/WeidiDeng/caddy-cloudflare-ip"
-          "github.com/mholt/caddy-dynamicdns"
-          "github.com/mholt/caddy-l4"
+          "github.com/WeidiDeng/caddy-cloudflare-ip@v0.0.0-20231130002422-f53b62aa13cb"
+          "github.com/mholt/caddy-dynamicdns@v0.0.0-20250430031602-b846b9e8fb83"
+          "github.com/mholt/caddy-l4@v0.0.0-20250530154005-4d3c80e89c5f"
         ];
         hash = "sha256-vg/Reqd7dPqIpCHTmm5BNd/EV72I09ccAQ1y+5X0kUE=";
       };
