@@ -18,9 +18,9 @@
         timeout client  1m
         timeout server  1m
 
-#      frontend talos_api
-#        bind *:50000
-#        default_backend talos_cp
+      frontend talos_api
+        bind *:50000
+        default_backend talos_cp
 
       frontend kube_api
         bind *:6443
