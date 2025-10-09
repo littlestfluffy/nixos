@@ -27,9 +27,9 @@
         default_backend talos_cp
 
       backend talos_cp
-        server cp1 192.168.2.231:6443 check
-        server cp2 192.168.2.232:6443 check
-        server cp3 192.168.2.233:6443 check
+        server cp1 192.168.2.240:6443 check
+        server cp2 192.168.2.241:6443 check
+        server cp3 192.168.2.242:6443 check
     '';
   };
 }
