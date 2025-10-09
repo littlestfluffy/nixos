@@ -12,6 +12,7 @@
     ./../../modules/qemu-guest.nix
     ./../../modules/openssh-server.nix
     ./../../modules/caddy.nix
+    ./../../modules/haproxy.nix
     ./../../modules/docker-rootless.nix
     ./../../modules/wireguard/server.nix
     ./../../modules/irssi.nix
