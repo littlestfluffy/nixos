@@ -6,7 +6,7 @@
 
   services.haproxy = {
     enable = true;
-    extraConfig = ''
+    config = ''
       global
         log stdout format raw local0
         maxconn 2000
