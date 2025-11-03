@@ -33,6 +33,9 @@
       satisfactory = mkSystem { hostname = "satisfactory"; disk = "/dev/sda"; };
       core = mkSystem { hostname = "core"; disk = "/dev/sda"; };
       nfs = mkSystem { hostname = "nfs"; disk = "/dev/sda"; };
+      server-1 = mkSystem { hostname = "server-1"; disk = "/dev/sda"; };
+      server-2 = mkSystem { hostname = "server-2"; disk = "/dev/sda"; };
+      server-3 = mkSystem { hostname = "server-3"; disk = "/dev/sda"; };
       n8n = mkSystem { hostname = "n8n"; disk = "/dev/sda"; };
       nextcloud = mkSystem { hostname = "nextcloud"; disk = "/dev/sda"; };
     };
