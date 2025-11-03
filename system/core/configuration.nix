@@ -25,6 +25,8 @@
     vim
   ];
 
+  networking.firewall.allowedTCPPorts = [ 7777 ];
+
   my.users = {
     username = "emily";
     sshKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE3LE6HunHPEvtNs4Tg3Nud0uHRMeihcCdiORosXrmfY" ];
