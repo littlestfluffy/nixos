@@ -11,7 +11,7 @@
     ./../../modules/boot-legacy.nix
     ./../../modules/qemu-guest.nix
     ./../../modules/openssh-server.nix
-    ./../../modules/mysqld.nix
+    ./../../modules/mysql.nix
     ./../../modules/docker-rootless.nix
     ./../../modules/irssi.nix
   ];
