@@ -11,10 +11,8 @@
     ./../../modules/boot-legacy.nix
     ./../../modules/qemu-guest.nix
     ./../../modules/openssh-server.nix
-    ./../../modules/caddy.nix
-    ./../../modules/haproxy.nix
+    ./../../modules/mysqld.nix
     ./../../modules/docker-rootless.nix
-    ./../../modules/wireguard/server.nix
     ./../../modules/irssi.nix
   ];
 
@@ -25,7 +23,7 @@
     vim
   ];
 
-  networking.firewall.allowedTCPPorts = [ 7777 ];
+#  networking.firewall.allowedTCPPorts = [ 5432 ];
 
   my.users = {
     username = "emily";
