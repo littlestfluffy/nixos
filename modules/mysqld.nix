@@ -7,5 +7,9 @@
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
+    configFile = ''
+      [mysqld]
+      bind-address = 0.0.0.0
+    '';
   };
 }
