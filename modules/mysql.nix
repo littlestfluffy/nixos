@@ -14,4 +14,6 @@
        port=3336
     '';
   };
+
+  ensureDatabases = [ ivybot ];
 }
