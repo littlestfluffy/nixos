@@ -10,7 +10,7 @@
     configFile = pkgs.writeText "my.cnf" ''
        [mysqld]
        datadir=/var/lib/mysql
-       bind-address=0.0.0.0
+       bind-address=*
        port=3336
     '';
   };
