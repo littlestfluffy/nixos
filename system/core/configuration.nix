@@ -13,7 +13,6 @@
     ./../../modules/openssh-server.nix
     ./../../modules/mysql.nix
     ./../../modules/docker-rootless.nix
-    ./../../modules/irssi.nix
   ];
 
   environment.localBinInPath = true;
